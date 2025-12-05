@@ -2,19 +2,30 @@
 
 The framework evaluates privacy–utility trade-offs for speech mixed with acoustic scenes (ASC) under sampling-based temporal obfuscation. Privacy leakage is measured using classical ASR metrics, semantic embedding-based metrics, and entity-aware named-entity leakage metrics proposed in the thesis.
 
-#System Requirements
-Ubuntu 20.04 / 22.04 LTS
+---
 
-Sufficient disk space for datasets (≈ 30 GB)
-To ensure efficient ASR retraining, embedding computations and audio processing:
+# System Requirements
 
-8–16 core CPU
+- Ubuntu 20.04 / 22.04 LTS  
+- Sufficient disk space for datasets (≈ 30 GB)  
+- To ensure efficient ASR retraining, embedding computations and audio processing:  
+  - 8–16 core CPU  
+  - 32 GB RAM  
+  - NVIDIA GPU with ≥ 8 GB VRAM  
+  - CUDA 11.8 or later  
 
-32 GB RAM
+---
 
-NVIDIA GPU with ≥ 8 GB VRAM 
+# 2. Installation
 
-CUDA 11.8 or later
+Install Miniconda.
+
+### Create conda environment:
+```bash
+conda create -n test python=3.12
+conda activate test
+pip install -r requirements.txt
+
 
 #2.Installation
 install miniconda 
@@ -23,11 +34,14 @@ conda create -n test python=3.12
 conda activate test
 
 pip install -r requirements.txt
+```
 
-#Step 1 — Baseline Preparation
+Step 1 — Baseline Preparation
+1. Prepare Speech Dataset
+python Audiotrim.py
 
-1.Prepare Speech Dataset- run python Audiotrim.py
----This concatenates all utterances per speaker and generates the final 390 clean speech files.
+
+This concatenates all utterances per speaker and generates the final 390 clean speech files.
 
 2.Mix SLUE speech with ASC background noise at different SNR levels.
 --run SpeechASCMix.py (later SNR with highest utility chosen)
