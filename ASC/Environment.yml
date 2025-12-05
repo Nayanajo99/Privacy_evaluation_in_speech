@@ -1,0 +1,30 @@
+name: sb-asr
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  # audio / dsp
+  - sox
+  - ffmpeg
+  - libsndfile
+  - numpy
+  - scipy
+  - pandas
+  - librosa
+  - pyyaml
+  - tqdm
+  
+  - pip:
+      # --- core DL (GPU, CUDA wheels pulled automatically) ---
+      - torch           # will install latest PyTorch for py3.12
+      - torchaudio
+      # --- speech/tooling ---
+      - speechbrain
+      - sentencepiece
+      - pydub
+      - soundfile
+      # --- your extras ---
+      - transformer-engine==2.3.0
+      # if you keep a project requirements file, include it last:
+      - -r requirements.txt
